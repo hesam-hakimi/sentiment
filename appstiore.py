@@ -6,7 +6,7 @@ id = 389801252
 all_data = []
 
 
-for offset in range(10, 100, 10):
+for offset in range(10, 1000, 10):
     url = F"https://amp-api.apps.apple.com/v1/catalog/ca/apps/{id}/reviews?l=en-CA&offset={offset}&platform=web&additionalPlatforms=appletv%2Cipad%2Ciphone%2Cmac"
     payload = {}
     headers = {
