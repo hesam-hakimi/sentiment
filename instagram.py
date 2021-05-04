@@ -1,12 +1,13 @@
+# gathering data from instagram
 import requests
 import csv
+import io
 
 id = 389801252
-# offset = 1190
 all_data = []
 
 
-for offset in range(10, 1000, 10):
+for offset in range(10, 1000000, 10):
     url = F"https://amp-api.apps.apple.com/v1/catalog/ca/apps/{id}/reviews?l=en-CA&offset={offset}&platform=web&additionalPlatforms=appletv%2Cipad%2Ciphone%2Cmac"
     payload = {}
     headers = {
@@ -16,7 +17,12 @@ for offset in range(10, 1000, 10):
     }
 
     response = requests.request("GET", url, headers=headers, data=payload)
-    data = response.json()["data"]
+    try:
+        data = response.json()["data"]
+    except Exception as e:
+        print(response)
+        print(e)
+        break
 
     for review in data:
         c = dict()
@@ -28,9 +34,9 @@ for offset in range(10, 1000, 10):
         c['username'] = review['attributes']['userName']
         c['isEdited'] = review['attributes']['isEdited']
         c['title'] = review['attributes']['title']
+        all_data.append(c)
 
-
-with open('test.csv', 'w') as f:
+with io.open('instagram.csv', 'w', encoding='utf-8', newline='',) as f:
     header = ['id', 'type', 'review', 'date',
               'rating', 'username', 'isEdited', 'title']
     writer = csv.DictWriter(f, fieldnames=header)
