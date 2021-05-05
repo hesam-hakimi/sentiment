@@ -12,13 +12,14 @@ i = 0
 
 for offset in range(10, 1000000, 10):
 
-    url = F"https://amp-api.apps.apple.com/v1/catalog/ca/apps/{id}/reviews?l=en-CA&offset={offset}&platform=web&additionalPlatforms=appletv%2Cipad%2Ciphone%2Cmac"
+    url = F"https://amp-api.apps.apple.com/v1/catalog/us/apps?ids=967351793,1041596399,740146917,1473867767,1394351700&platform=web&additionalPlatforms=appletv%2Cipad%2Ciphone%2Cmac"
+    #"https://amp-api.apps.apple.com/v1/catalog/us/apps/{id}/reviews?l=en-CA&offset={offset}&platform=web&additionalPlatforms=appletv%2Cipad%2Ciphone%2Cmac"
     payload = {}
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
         'authorization': 'Bearer eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IlU4UlRZVjVaRFMifQ.eyJpc3MiOiI3TktaMlZQNDhaIiwiaWF0IjoxNjE5NTU4MzA3LCJleHAiOjE2MjI1ODIzMDd9.XSvw9LqevrPYhN1FXar4OP6v87QXHbKp8jXymMtwDS7JU14PLil50Ol2IYs0uUwiUx43s-YZySR4ZkkJN069Yw',
-        'Cookie': 'geo=CA',
-        'path': '/v1/catalog/ca/apps/389801252/reviews?l=en-CA&offset={offset}&platform=web&additionalPlatforms=appletv,ipad,iphone,mac',
+        'Cookie': 'geo=US',
+        'path': '/v1/catalog/us/apps/389801252/reviews?l=en-CA&offset={offset}&platform=web&additionalPlatforms=appletv,ipad,iphone,mac',
         'authority': 'amp-api.apps.apple.com',
         'scheme': 'https',
         'accept': 'application/json',
