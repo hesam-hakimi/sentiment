@@ -1,7 +1,10 @@
-from datetime import datetime
+import sqlite3
+def select():
+    conn = sqlite3.connect('hesam.db')
+    cur = conn.cursor()
+    cur.execute('select * from pintrest')
+    t1 = cur.fetchall()
+    conn.close()
+    return t1
 
-s = "APRIL 2 2021"
-
-
-d = datetime.strptime(s, '%B %d %Y')
-print(d.strftime('%Y-%m-%d'))
+print (select())
